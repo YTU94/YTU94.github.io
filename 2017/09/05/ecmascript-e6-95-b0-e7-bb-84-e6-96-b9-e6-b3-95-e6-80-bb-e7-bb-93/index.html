@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ECMAScript数组方法总结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先说些为什么叫ECMAScript数组方法, 1.javascript现在这么语言的规范基本上就是按照ECMAScript国际规范来的； 2.我自己觉得从ECMAScript整个规范的历史进程来总结数组方法也是一个语言的发展过程吧。 开发过程中，我们和数组打交道的地方太多了，所以了解数组以及js对于数组的一些重要的api特别重要。 我主要从EcmaScript来谈谈数组api的变化： ES3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAScript数组方法总结">
+<meta property="og:url" content="http://yoursite.com/2017/09/05/ecmascript-e6-95-b0-e7-bb-84-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先说些为什么叫ECMAScript数组方法, 1.javascript现在这么语言的规范基本上就是按照ECMAScript国际规范来的； 2.我自己觉得从ECMAScript整个规范的历史进程来总结数组方法也是一个语言的发展过程吧。 开发过程中，我们和数组打交道的地方太多了，所以了解数组以及js对于数组的一些重要的api特别重要。 我主要从EcmaScript来谈谈数组api的变化： ES3">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-12T14:49:31.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMAScript数组方法总结">
+<meta name="twitter:description" content="首先说些为什么叫ECMAScript数组方法, 1.javascript现在这么语言的规范基本上就是按照ECMAScript国际规范来的； 2.我自己觉得从ECMAScript整个规范的历史进程来总结数组方法也是一个语言的发展过程吧。 开发过程中，我们和数组打交道的地方太多了，所以了解数组以及js对于数组的一些重要的api特别重要。 我主要从EcmaScript来谈谈数组api的变化： ES3">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ecmascript-e6-95-b0-e7-bb-84-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/05/ecmascript-e6-95-b0-e7-bb-84-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/" class="article-date">
+  <time datetime="2017-09-04T21:30:55.000Z" itemprop="datePublished">2017-09-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ECMAScript数组方法总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>首先说些为什么叫ECMAScript数组方法, 1.javascript现在这么语言的规范基本上就是按照ECMAScript国际规范来的； 2.我自己觉得从ECMAScript整个规范的历史进程来总结数组方法也是一个语言的发展过程吧。 开发过程中，我们和数组打交道的地方太多了，所以了解数组以及js对于数组的一些重要的api特别重要。 我主要从EcmaScript来谈谈数组api的变化： <strong>ES3</strong></p>
+<hr>
+<p>其实我个人感觉es3的数组的api还是很实用，尽管现在es6都普及了 <strong>join(sep)</strong></p>
+<blockquote>
+<p>将数组元素通过指定的字符连接成字符串</p>
+</blockquote>
+<p>var array = [1, 2, 3, 4, 5];<br>//无参数时，默认用‘,’连接<br>var joinStr = array.join();//joinstr: ‘1,2,3,4,5’<br>//用‘-’连接<br>var joinStr1 = array.join(‘-‘);//joinStr1: ‘1-2-3-4-5’</p>
+<p><strong>reverse()</strong></p>
+<blockquote>
+<p>将数组元素颠倒顺序</p>
+</blockquote>
+<p>var array = [1, 2, 3, 4, 5];<br>array.reverse();//array: [5,4,3,2,1]</p>
+<p><strong>sort(fn)</strong></p>
+<blockquote>
+<p>将数组元素排序</p>
+</blockquote>
+<p>var array = [‘a’, ‘e’, ‘b’, ‘d’, ‘c’];</p>
+<p>//无参数时按照字母表升顺排序<br>array.sort(); //array: [‘a’,’b’,’c’,’d’,’e’]</p>
+<p>//当参数是函数时，函数有两个参数a、b，分别是数组相邻的两个数据，返回值则决定相邻的两个数据哪个排在在前面<br>//返回值小于0，则a顺序在前<br>//返回值大于0，则a顺序在后<br>例如：<br>var array = [5, 2, 1, 4, 3];</p>
+<p>//升序排列，用代入的思想可以把a看成5，b看出2。<br>array.sort(function (a, b) {<br>    return a - b;<br>});//array: [1,2,3,4,5]</p>
+<p>//降序排列<br>array.sort(function (a, b) {<br>    return b - a;<br>});//array: [5,4,3,2,1]</p>
+<p><strong>concat(data…)</strong></p>
+<blockquote>
+<p>数组拼接成新的数组</p>
+</blockquote>
+<p>var array = [1, 2, 3];</p>
+<p>var newArray = array.concat(1, ‘xxx’); //newArray: [1, 2, 3, 1, ‘xxx’]</p>
+<p>var newArray1 = array.concat([4, 5]); //newArray1: [1, 2, 3, 4, 5]</p>
+<p><strong>slice(start,end)</strong></p>
+<blockquote>
+<p>数组截取</p>
+</blockquote>
+<p>var array = [1, 2, 3, 4, 5];</p>
+<p>var newArray = array.slice(1); //newArray: [2,3,4,5]<br>var newArray1 = array.slice(0, 3); //newArray1: [1,2,3]<br>var newArray2 = array.slice(0, -1); //newArray2: [1,2,3,4]<br>var newArray3 = array.slice(-3, -2); //newArray3: [3]</p>
+<p><strong>splice(start,len,data…)</strong></p>
+<blockquote>
+<p>数组插入数据、删除数据</p>
+</blockquote>
+<p>var array = [1, 2, 3, 4, 5]</p>
+<p>var newArray = array.splice(1);//array=[1] newArray=[2,3,4,5]<br>var newArray1 = array.splice(0, 2);//array=[3,4,5] newArray1=[1,2]<br>var newArray2 = array.splice(0, 1, 6, 7);//array=[6,7,2,3,4,5] newArray2=[1]</p>
+<p><strong>push(data…)</strong></p>
+<blockquote>
+<p>往数组的尾部添加数据</p>
+</blockquote>
+<p>var array = [1, 2, 3];</p>
+<p>array.push(4, 5);//array : [1,2,3,4,5]</p>
+<p><strong>pop()</strong></p>
+<blockquote>
+<p>删除数组的最后一个数据</p>
+</blockquote>
+<p>var array = [1, 2, 3, 4, 5];</p>
+<p>var value = array.pop();//array : [1,2,3,4]  value: 5</p>
+<p><strong>unshift(data…)</strong></p>
+<blockquote>
+<p>往数组的头部添加数据</p>
+</blockquote>
+<p>var array = [3, 4, 5];</p>
+<p>array.unshift(1, 2);//array : [1,2,3,4,5]</p>
+<p><strong>shift()</strong></p>
+<blockquote>
+<p>删除数组的第一一个数据</p>
+</blockquote>
+<p>var array = [1, 2, 3, 4, 5];</p>
+<p>var value = array.shift();//array : [2,3,4,5] value: 1</p>
+<hr>
+<p><strong>ES5</strong> ES5新增了9个api,我也查看了些文章，借鉴了不少，</p>
+<hr>
+<blockquote>
+<p>5个迭代方法：forEach()、map()、filter()、some()、every()；</p>
+</blockquote>
+<blockquote>
+<p>2个索引方法：indexOf() 和 lastIndexOf()；</p>
+</blockquote>
+<blockquote>
+<p>2个归并方法：reduce()、reduceRight()；</p>
+</blockquote>
+<p>比较重要的思想是都不会改变原数组，相对ES3迭代使用的更多，减少了for循环的使用。 <strong>forEach()</strong></p>
+<blockquote>
+<p>对数组进行遍历循环，对数组中的每一项运行给定的函数，这个方法没有返回值。</p>
+</blockquote>
+<p>var arr1 = [2,4,6];<br>arr1.forEach(function(value, index, arr) {<br>  console.log(value + ‘:’ + index + ‘:’ +arr);<br>});<br>// 2:0:2,4,6<br>// 4:1:2,4,6<br>// 6:2:2,4,6</p>
+<hr>
+<p><strong>map()</strong></p>
+<blockquote>
+<p>指“映射”，对数组中的每一项运行给定的函数，返回每次函数调用的结果组成的数组。</p>
+</blockquote>
+<p>var arr2 = [2,4,6];<br>var sum2 = arr2.map(function(value,index,arr) {<br>  return value += value;<br>});<br>console.log(sum2);  // [4, 8, 12] </p>
+<p><strong>filter()</strong></p>
+<blockquote>
+<p>“过滤”，对数组中的每一项运行给定函数，返回满足过滤条件组成的数组。</p>
+</blockquote>
+<p>var arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];<br>var flag = arr3.filter(function(value, index) {<br>  return value % 3 === 0;<br>});<br>console.log(flag);  // [3, 6, 9]</p>
+<p><strong>every()</strong></p>
+<blockquote>
+<p>判断数组中每一项都是否满足所给条件，当所有项都满足条件，才会返回true。</p>
+</blockquote>
+<p>var arr4 = [1, 2, 3, 4, 5];<br>var flag = arr4.every(function(value, index) {<br>  return value % 2 === 0;<br>});<br>console.log(flag);  // false</p>
+<p><strong>some()</strong></p>
+<blockquote>
+<p>判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true。</p>
+</blockquote>
+<p>var arr5 = [1, 2, 3, 4, 5];<br>var flag = arr5.some(function(value, index) {<br>  return value % 2 === 0;<br>});<br>console.log(flag);   // true</p>
+<p><strong>indexOf()</strong></p>
+<blockquote>
+<p>返回查找项的整数索引值，如果没有匹配（严格匹配），返回-1。这个方法与字符串方法ndexOf()的功能是一样的，不过是对数组的操作而已。</p>
+</blockquote>
+<p>var arr6 = [1, 3, 5, 3, 5];</p>
+<p>console.log(arr6.indexOf(5, ‘x’));  // 2 (‘x’被忽略)<br>console.log(arr6.indexOf(‘5’, 3));  // -1 (未找到，因为5 !== ‘5’)<br>console.log(arr6.indexOf(5, ‘3’));  // 4 (从3号位开始向后搜索)<br>console.log(arr6.indexOf(5, 3));  // 4 (从3号位开始向后搜索)<br>console.log(arr6.indexOf(4));  // -1 (未找到)</p>
+<p>lastIndexOf()与IndexOf()类似,只是lastIndexOf()是从字符串的末尾开始查找，而不是从开头. <strong>reduce()</strong></p>
+<blockquote>
+<p>方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。注意: reduce() 对于空数组是不会执行回调函数的。</p>
+</blockquote>
+<p>var arr9 = [1, 2, 3, 4];<br>var sum9 =arr9.reduce(function (total, curr, index, array) {<br>  return total <em> curr;<br>});<br>console.log(sum9);  // 24<br>var sum9_1 =arr9.reduce(function (total, curr, index, array) {<br>  return total </em> curr;<br>}, 10);<br>console.log(sum9_1);  // 240</p>
+<p>reduceRight()和reduce()相比，用法类似，差异在于reduceRight是从数组的末尾开始实现的。来做个简单的减法：</p>
+<hr>
+<p><strong>ES6</strong> 这里主要看了阮老师的《ECMAScript6入门》中数组的扩展。 那我就不说了吧，阮老师的那么好，自己去看<a href="http://es6.ruanyifeng.com/#docs/array" target="_blank" rel="noopener">es6数组扩展</a></p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/05/ecmascript-e6-95-b0-e7-bb-84-e6-96-b9-e6-b3-95-e6-80-bb-e7-bb-93/" data-id="cjlz9hvjp001khoada0u7391k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/06/e9-9a-8f-e7-ac-94/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          随笔-vue
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/29/my-first-node-app-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">My First Node App--Blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/好文/">好文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/学习笔记/">学习笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/好文/">好文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB前端/">WEB前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python入门/">python入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/业务线/">业务线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习和反思/">学习和反思</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员/">程序员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自我学习/">自我学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访客统计工具/">访客统计工具</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/WEB前端/" style="font-size: 20px;">WEB前端</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python入门/" style="font-size: 10px;">python入门</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/业务线/" style="font-size: 10px;">业务线</a> <a href="/tags/学习和反思/" style="font-size: 10px;">学习和反思</a> <a href="/tags/程序员/" style="font-size: 10px;">程序员</a> <a href="/tags/自我学习/" style="font-size: 10px;">自我学习</a> <a href="/tags/访客统计工具/" style="font-size: 10px;">访客统计工具</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/12/hello-ytu-Blog/">hello,ytu Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/03/python-e5-85-a5-e9-97-a8-e7-af-87-e5-a5-bd-e6-96-87/">python入门篇--好文</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/30/e9-97-ad-e5-8c-85-e5-9c-a8-e4-b8-9a-e5-8a-a1-e4-b8-ad-e7-9a-84-e5-ba-94-e7-94-a8-ef-bc-9f/">闭包--在业务中的应用？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/20/e4-bb-a5vue-e4-b8-ba-e4-be-8b-ef-bc-8c-e8-a7-a3-e9-87-8ajavascript-e7-9a-84-e5-8f-8d-e5-ba-94-e6-80-a7-e5-a5-bd-e6-96-87/">以Vue为例，解释JavaScript的反应性--好文</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

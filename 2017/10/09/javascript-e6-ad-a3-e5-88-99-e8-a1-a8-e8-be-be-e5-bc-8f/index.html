@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JavaScript--正则表达式 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="javascript的正则表达式特性则借鉴自Rerl。 正则表达式是一门简单语言的语言规范。他应用在一些方法中，对字符串中的信息实现查找，替换和提取操作。 正则表达式使我们程序员的一项基本功，所以我也就记录在这里，虽然不是很常用，但是技多不压身。 首先介绍下正则的正确使用姿势： JavaScript RegExp 对象 RegExp: 是正则表达式（regular expression）的简写。">
+<meta name="keywords" content="WEB前端,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript--正则表达式">
+<meta property="og:url" content="http://yoursite.com/2017/10/09/javascript-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="javascript的正则表达式特性则借鉴自Rerl。 正则表达式是一门简单语言的语言规范。他应用在一些方法中，对字符串中的信息实现查找，替换和提取操作。 正则表达式使我们程序员的一项基本功，所以我也就记录在这里，虽然不是很常用，但是技多不压身。 首先介绍下正则的正确使用姿势： JavaScript RegExp 对象 RegExp: 是正则表达式（regular expression）的简写。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-12T14:49:31.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript--正则表达式">
+<meta name="twitter:description" content="javascript的正则表达式特性则借鉴自Rerl。 正则表达式是一门简单语言的语言规范。他应用在一些方法中，对字符串中的信息实现查找，替换和提取操作。 正则表达式使我们程序员的一项基本功，所以我也就记录在这里，虽然不是很常用，但是技多不压身。 首先介绍下正则的正确使用姿势： JavaScript RegExp 对象 RegExp: 是正则表达式（regular expression）的简写。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javascript-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/09/javascript-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f/" class="article-date">
+  <time datetime="2017-10-09T00:45:07.000Z" itemprop="datePublished">2017-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript--正则表达式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>javascript的正则表达式特性则借鉴自<strong>Rerl</strong>。 正则表达式是一门简单语言的语言规范。他应用在一些方法中，对字符串中的信息实现查找，替换和提取操作。 正则表达式使我们程序员的一项基本功，所以我也就记录在这里，虽然不是很常用，但是技多不压身。 首先介绍下正则的正确使用姿势： <strong>JavaScript RegExp 对象</strong> RegExp: 是正则表达式（regular expression）的简写。 正则表达式描述了字符的模式对象。 当您检索某个文本时，可以使用一种模式来描述要检索的内容。RegExp 就是这种模式。 简单的模式可以是一个单独的字符。 更复杂的模式包括了更多的字符，并可用于解析、格式检查、替换等等。 您可以规定字符串中的检索位置，以及要检索的字符类型，等等。 <strong>语法</strong></p>
+<p>var patt=new RegExp(pattern,modifiers);</p>
+<p>// 或更简单的方法</p>
+<p>var patt=/pattern/modifiers; </p>
+<blockquote>
+<p>模式描述了一个表达式模型。 修饰符(modifiers)描述了检索是否是全局，区分大小写等。</p>
+</blockquote>
+<p>// 等价的两种方式<br>var re = new RegExp(“\\w+”);</p>
+<p>var re = /\w+/;</p>
+<p>上面简单介绍了RegExp对象的创建，下面说的它的<strong>methods</strong>(使用方法)： Regular expressions are used with the RegExp methods <strong>test</strong> and <strong>exec</strong> and with the String methods <strong>match</strong>, <strong>replace</strong>, <strong>search</strong>, and <strong>split</strong>.</p>
+<hr>
+<p>exec : 一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回null） test: 一个在字符串中测试是否匹配的RegExp方法，它返回true或false。 match: 一个在字符串中执行查找匹配的String方法，它返回一个数组或者在未匹配到时返回null。 search: 一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1 replace: 一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串 split: 一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的String方法。</p>
+<hr>
+<p>当你想要知道在一个字符串中的一个匹配是否被找到，你可以使用test或search方法；想得到更多的信息（但是比较慢）则可以使用exec或match方法。如果你使用exec或match方法并且匹配成功了，那么这些方法将返回一个数组并且更新相关的正则表达式对象的属性和预定义的正则表达式对象（详见下）。如果匹配失败，那么exec方法返回null（也就是false）。 再说说正则的<strong>flags</strong>(标志)：</p>
+<blockquote>
+<p>g: 全局搜索。 i: 不区分大小写搜索。 m: 多行搜索。 u: unicode;将模式视为unicode代码点的序列。 y: 执行“粘性”搜索,匹配从目标字符串的当前位置开始，可以使用y标志。</p>
+</blockquote>
+<hr>
+<p>正则表达式执行返回信息</p>
+<p>对象</p>
+<p>属性或索引</p>
+<p>描述</p>
+<p>在例子中对应的值</p>
+<p>myArray</p>
+<p>匹配到的字符串和所有被记住的子字符串。</p>
+<p>[“dbbd”, “bb”]</p>
+<p>index</p>
+<p>在输入的字符串中匹配到的以0开始的索引值。</p>
+<p>1</p>
+<p>input</p>
+<p>初始字符串。</p>
+<p>“cdbbdbsbz”</p>
+<p>[0]</p>
+<p>匹配到的所有字符串（并不是匹配后记住的字符串）。注：原文”The last matched characters.”，应该是原版错误。匹配到的最后一个字符索引。</p>
+<p>“dbbd”</p>
+<p>myRe</p>
+<p>lastIndex</p>
+<p>下一个匹配的索引值。（这个属性只有在使用g参数时可用在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#.E9.80.9A.E8.BF.87.E5.8F.82.E6.95.B0.E8.BF.9B.E8.A1.8C.E9.AB.98.E7.BA.A7.E6.90.9C.E7.B4.A2" target="_blank" rel="noopener">通过参数进行高级搜索</a> 一节有详细的描述.)</p>
+<p>5</p>
+<p>source</p>
+<p>模式文本。在正则表达式创建时更新，不执行。</p>
+<p>“d(b+)d”</p>
+<hr>
+<p>最后，最重要的特殊字符</p>
+<p>表 4.1 正则表达式中的特殊字符</p>
+<p>字符</p>
+<p>含义</p>
+<p><a href="#special-backslash"><code>\</code></a></p>
+<p>匹配将依照下列规则： 在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。例如，没有前面’\‘的’b’通常匹配小写’b’，无论它们出现在哪里。如果加了’\‘,这个字符变成了一个特殊意义的字符，意思是匹配一个<a href="#note" title="#special-word-boundary">字符边界</a>。 反斜杠也可以将其后的特殊字符，转义为字面量。例如，模式 /a<em>/ 代表会匹配 0 个或者多个 a。相反，模式 /a\</em>/ 将 ‘<em>‘ 的特殊性移除，从而可以匹配像 “a</em>“ 这样的字符串。 使用 new RegExp(“pattern”) 的时候不要忘记将 \ 进行转义，因为 \ 在字符串里面也是一个转义字符。</p>
+<p><a href="#special-caret"><code>^</code></a></p>
+<p>匹配输入的开始。如果多行标志被设置为true，那么也匹配换行符后紧跟的位置。 例如，/^A/ 并不会匹配 “an A” 中的 ‘A’，但是会匹配 “An E” 中的 ‘A’。 当 ‘^’ 作为第一个字符出现在一个字符集合模式时，它将会有不同的含义。<a href="#note">补充字符集合</a> 一节有详细介绍和示例。</p>
+<p><a href="#special-dollar"><code>$</code></a></p>
+<p>匹配输入的结束。如果多行标示被设置为true，那么也匹配换行符前的位置。 例如，/t$/ 并不会匹配 “eater” 中的 ‘t’，但是会匹配 “eat” 中的 ‘t’。</p>
+<p><a href="#special-asterisk"><code>*</code></a></p>
+<p>匹配前一个表达式0次或多次。等价于 {0,}。 例如，/bo*/会匹配 “A ghost boooooed” 中的 ‘booooo’ 和 “A bird warbled” 中的 ‘b’，但是在 “A goat grunted” 中将不会匹配任何东西。</p>
+<p><a href="#special-plus"><code>+</code></a></p>
+<p>匹配前面一个表达式1次或者多次。等价于 {1,}。 例如，/a+/匹配了在 “candy” 中的 ‘a’，和在 “caaaaaaandy” 中所有的 ‘a’。</p>
+<p><a href="#special-questionmark"><code>?</code></a></p>
+<p>匹配前面一个表达式0次或者1次。等价于 {0,1}。 例如，/e?le?/ 匹配 “angel” 中的 ‘el’，和 “angle” 中的 ‘le’ 以及”oslo’ 中的’l’。 如果<strong>紧跟在任何量词 *、 +、? 或 {} 的后面</strong>，将会使量词变为<strong>非贪婪</strong>的（匹配尽量少的字符），和缺省使用的<strong>贪婪模式</strong>（匹配尽可能多的字符）正好相反。 例如，对 “123abc” 应用 /\d+/ 将会返回 “123”，如果使用 /\d+?/,那么就只会匹配到 “1”。 还可以运用于先行断言，如本表的 <code>x(?=y)</code> 和 <code>x(?!y)</code> 条目中所述。</p>
+<p><a href="#special-dot"><code>.</code></a></p>
+<p>（小数点）匹配除换行符之外的任何单个字符。 例如，/.n/将会匹配 “nay, an apple is on the tree” 中的 ‘an’ 和 ‘on’，但是不会匹配 ‘nay’。</p>
+<p><a href="#special-capturing-parentheses"><code>(x)</code></a></p>
+<p>匹配 ‘x’ 并且记住匹配项，就像下面的例子展示的那样。括号被称为 <em>捕获括号</em>。 模式 /(foo) (bar) \1 \2/ 中的 ‘(foo)’ 和 ‘(bar)’ 匹配并记住字符串 “foo bar foo bar” 中前两个单词。模式中的 \1 和 \2 匹配字符串的后两个单词。注意 \1、\2、\n 是用在正则表达式的匹配环节。在正则表达式的替换环节，则要使用像 $1、$2、$n 这样的语法，例如，’bar foo’.replace( /(…) (…)/, ‘$2 $1’ )。</p>
+<p><a href="#special-non-capturing-parentheses"><code>(?:x)</code></a></p>
+<p>匹配 ‘x’ 但是不记住匹配项。这种叫作非捕获括号，使得你能够定义为与正则表达式运算符一起使用的子表达式。来看示例表达式 /(?:foo){1,2}/。如果表达式是 /foo{1,2}/，{1,2}将只对 ‘foo’ 的最后一个字符 ’o‘ 生效。如果使用非捕获括号，则{1,2}会匹配整个 ‘foo’ 单词。</p>
+<p><a href="#special-lookahead"><code>x(?=y)</code></a></p>
+<p>匹配’x’仅仅当’x’后面跟着’y’.这种叫做正向肯定查找。 例如，/Jack(?=Sprat)/会匹配到’Jack’仅仅当它后面跟着’Sprat’。/Jack(?=Sprat|Frost)/匹配‘Jack’仅仅当它后面跟着’Sprat’或者是‘Frost’。但是‘Sprat’和‘Frost’都不是匹配结果的一部分。</p>
+<p><a href="#special-negated-look-ahead"><code>x(?!y)</code></a></p>
+<p>匹配’x’仅仅当’x’后面不跟着’y’,这个叫做正向否定查找。 例如，/\d+(?!\.)/匹配一个数字仅仅当这个数字后面没有跟小数点的时候。正则表达式/\d+(?!\.)/.exec(“3.141”)匹配‘141’但是不是‘3.141’</p>
+<p><a href="#special-or"><code>x|y</code></a></p>
+<p>匹配‘x’或者‘y’。 例如，/green|red/匹配“green apple”中的‘green’和“red apple”中的‘red’</p>
+<p><a href="#special-quantifier"><code>{n}</code></a></p>
+<p>n是一个正整数，匹配了前面一个字符刚好发生了n次。 比如，/a{2}/不会匹配“candy”中的’a’,但是会匹配“caandy”中所有的a，以及“caaandy”中的前两个’a’。</p>
+<p><a href="#special-quantifier-range"><code>{n,m}</code></a></p>
+<p>n 和 m 都是整数。匹配前面的字符至少n次，最多m次。如果 n 或者 m 的值是0， 这个值被忽略。 例如，/a{1, 3}/ 并不匹配“cndy”中得任意字符，匹配“candy”中得a，匹配“caandy”中得前两个a，也匹配“caaaaaaandy”中得前三个a。注意，当匹配”caaaaaaandy“时，匹配的值是“aaa”，即使原始的字符串中有更多的a。</p>
+<p><a href="#special-character-set"><code>[xyz]</code></a></p>
+<p>一个字符集合。匹配方括号的中任意字符，包括<a href="/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types">转义序列</a>。你可以使用破折号（-）来指定一个字符范围。对于点（.）和星号（*）这样的特殊符号在一个字符集中没有特殊的意义。他们不必进行转义，不过转义也是起作用的。 例如，[abcd] 和[a-d]是一样的。他们都匹配”brisket”中得‘b’,也都匹配“city”中的‘c’。/[a-z.]+/ 和/[\w.]+/都匹配“test.i.ng”中得所有字符。</p>
+<p><a href="#special-negated-character-set"><code>[^xyz]</code></a></p>
+<p>一个反向字符集。也就是说， 它匹配任何没有包含在方括号中的字符。你可以使用破折号（-）来指定一个字符范围。任何普通字符在这里都是起作用的。 例如，[^abc] 和 [^a-c] 是一样的。他们匹配”brisket”中得‘r’，也匹配“chop”中的‘h’。</p>
+<p><a href="#special-backspace"><code>[\b]</code></a></p>
+<p>匹配一个退格(U+0008)。（不要和\b混淆了。）</p>
+<p><a href="#special-word-boundary"><code>\b</code></a></p>
+<p>匹配一个词的边界。一个词的边界就是一个词不被另外一个词跟随的位置或者不是另一个词汇字符前边的位置。注意，一个匹配的词的边界并不包含在匹配的内容中。换句话说，一个匹配的词的边界的内容的长度是0。（不要和[\b]混淆了） 例子： /\bm/匹配“moon”中得‘m’； /oo\b/并不匹配”moon”中得’oo’，因为’oo’被一个词汇字符’n’紧跟着。 /oon\b/匹配”moon”中得’oon’，因为’oon’是这个字符串的结束部分。这样他没有被一个词汇字符紧跟着。 /\w\b\w/将不能匹配任何字符串，因为一个单词中的字符永远也不可能被一个非词汇字符和一个词汇字符同时紧跟着。</p>
+<p><strong>注意:</strong> JavaScript的正则表达式引擎将<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.10.2.6" target="_blank" rel="noopener">特定的字符集</a>定义为“字”字符。不在该集合中的任何字符都被认为是一个断词。这组字符相当有限：它只包括大写和小写的罗马字母，小数位数和下划线字符。不幸的是，重要的字符，例如“é”或“ü”，被视为断词。</p>
+<p><a href="#special-non-word-boundary"><code>\B</code></a></p>
+<p>匹配一个非单词边界。他匹配一个前后字符都是相同类型的位置：都是单词或者都不是单词。一个字符串的开始和结尾都被认为是非单词。 例如，/\B../匹配”noonday”中得’oo’, 而/y\B./匹配”possibly yesterday”中得’ye‘</p>
+<p><a href="#special-control"><code>\c_X_</code></a></p>
+<p>当X是处于A到Z之间的字符的时候，匹配字符串中的一个控制符。 例如，<code>/\cM/</code> 匹配字符串中的 control-M (U+000D)。</p>
+<p><a href="#special-digit"><code>\d</code></a></p>
+<p>匹配一个数字<code>。</code> <code>等价于[0-9]</code>。 例如， <code>/\d/</code> 或者 <code>/[0-9]/</code> 匹配”B2 is the suite number.”中的’2’。</p>
+<p><a href="#special-non-digit"><code>\D</code></a></p>
+<p>匹配一个非数字字符<code>。</code> <code>等价于[^0-9]</code>。 例如， <code>/\D/</code> 或者 <code>/[^0-9]/</code> 匹配”B2 is the suite number.”中的’B’ 。</p>
+<p><a href="#special-form-feed"><code>\f</code></a></p>
+<p>匹配一个换页符 (U+000C)。</p>
+<p><a href="#special-line-feed"><code>\n</code></a></p>
+<p>匹配一个换行符 (U+000A)。</p>
+<p><a href="#special-carriage-return"><code>\r</code></a></p>
+<p>匹配一个回车符 (U+000D)。</p>
+<p><a href="#special-white-space"><code>\s</code></a></p>
+<p>匹配一个空白字符，包括空格、制表符、换页符和换行符。 等价于[ \f\n\r\t\v\u00a0\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]。 例如, <code>/\s\w*/</code> 匹配”foo bar.”中的’ bar’。</p>
+<p><a href="#special-non-white-space"><code>\S</code></a></p>
+<p>匹配一个非空白字符。 等价于<code>[^</code> \f\n\r\t\v\u00a0\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff<code>]</code>。 例如， <code>/\S\w*/</code> 匹配”foo bar.”中的’foo’。</p>
+<p><a href="#special-tab"><code>\t</code></a></p>
+<p>匹配一个水平制表符 (U+0009)。</p>
+<p><a href="#special-vertical-tab"><code>\v</code></a></p>
+<p>匹配一个垂直制表符 (U+000B)。</p>
+<p><a href="#special-word"><code>\w</code></a></p>
+<p>匹配一个单字字符（字母、数字或者下划线）。 等价于<code>[A-Za-z0-9_]</code>。 例如, <code>/\w/</code> 匹配 “apple,” 中的 ‘a’，”$5.28,”中的 ‘5’ 和 “3D.” 中的 ‘3’。</p>
+<p><a href="#special-non-word"><code>\W</code></a></p>
+<p>匹配一个非单字字符。 等价于<code>[^A-Za-z0-9_]</code>。 例如, <code>/\W/</code> 或者 <code>/[^A-Za-z0-9_]/</code> 匹配 “50%.” 中的 ‘%’。</p>
+<p><a href="#special-backreference"><code>\_n_</code></a></p>
+<p>当 n 是一个正整数，一个返回引用到最后一个与有n插入的正值表达式(counting left parentheses)匹配的副字符串。 比如 <code>/apple(,)\sorange\1/</code> 匹配”apple, orange, cherry, peach.”中的’apple, orange,’ 。</p>
+<p><a href="#special-null"><code>\0</code></a></p>
+<p>匹配 NULL (U+0000) 字符， 不要在这后面跟其它小数，因为 <code>\0&lt;digits&gt;</code> 是一个八进制转义序列。</p>
+<p><a href="#special-hex-escape"><code>\xhh</code></a></p>
+<p>与代码 hh 匹配字符（两个十六进制数字）</p>
+<p><a href="#special-unicode-escape"><code>\uhhhh</code></a></p>
+<p>与代码 hhhh 匹配字符（四个十六进制数字）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/09/javascript-e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f/" data-id="cjlz9hvk4001zhoad341ayqkj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB前端/">WEB前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/25/e6-8d-a3-e9-bc-93vue-e6-9d-a5-e5-b0-b1-e6-9d-a5-e7-82-b9-e7-8c-9b-e7-9a-84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          捣鼓VUE--来就来点猛的
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/24/e4-ba-8b-e4-bb-b6-e5-a7-94-e6-89-98-e7-9a-84-e5-a5-bd-e5-a4-84-javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">javascript-事件委托的好处</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/好文/">好文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/学习笔记/">学习笔记</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/好文/">好文</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB前端/">WEB前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python入门/">python入门</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/业务线/">业务线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习和反思/">学习和反思</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员/">程序员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自我学习/">自我学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/访客统计工具/">访客统计工具</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/WEB前端/" style="font-size: 20px;">WEB前端</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python入门/" style="font-size: 10px;">python入门</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/业务线/" style="font-size: 10px;">业务线</a> <a href="/tags/学习和反思/" style="font-size: 10px;">学习和反思</a> <a href="/tags/程序员/" style="font-size: 10px;">程序员</a> <a href="/tags/自我学习/" style="font-size: 10px;">自我学习</a> <a href="/tags/访客统计工具/" style="font-size: 10px;">访客统计工具</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/12/hello-ytu-Blog/">hello,ytu Blog</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/03/python-e5-85-a5-e9-97-a8-e7-af-87-e5-a5-bd-e6-96-87/">python入门篇--好文</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/30/e9-97-ad-e5-8c-85-e5-9c-a8-e4-b8-9a-e5-8a-a1-e4-b8-ad-e7-9a-84-e5-ba-94-e7-94-a8-ef-bc-9f/">闭包--在业务中的应用？</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/20/e4-bb-a5vue-e4-b8-ba-e4-be-8b-ef-bc-8c-e8-a7-a3-e9-87-8ajavascript-e7-9a-84-e5-8f-8d-e5-ba-94-e6-80-a7-e5-a5-bd-e6-96-87/">以Vue为例，解释JavaScript的反应性--好文</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
