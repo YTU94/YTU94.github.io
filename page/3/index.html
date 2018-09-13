@@ -152,174 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-javascript-e4-ba-8b-e4-bb-b6-e6-b5-81" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/javascript-e4-ba-8b-e4-bb-b6-e6-b5-81/">javascript--事件流</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/19/javascript-e4-ba-8b-e4-bb-b6-e6-b5-81/" class="archive-article-date">
-  	<time datetime="2017-09-18T19:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此文写给那些你还不够真正了解js-event基础的学生。 首先说下什么是事件流，事件流表示总页面中接收事件的顺服。 1.IE的事件流叫做<strong>事件冒泡</strong>，即事件总最底层向上扩展； 2.NC团队提出的事件流叫做<strong>事件捕获</strong>，刚好与IE的相反。 然而DOM2级事件定义了事件流的三个阶段：事件捕获阶段，处于目标阶段，事件冒泡阶段。 这里注意在DOM事件流中，实际目标在捕获阶段是不会接受到时间的。 看下图就明白了: <img src="http://jiankang.juwu168.com/blog/wp-content/uploads/2017/09/894254-20160402180512723-1426480197.png" alt=""></p>
-<hr>
-<h3 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h3><p>现在我们说下事件处理程序: <strong>1.HTML事件处理程序</strong></p>
-<p> function () {<br>    alert(“hello world!”);<br>} </p>
-<p>指定事件处理程序，会创建一个封装着元素属性的含糊，这个函数中有个局部变量event–时间对象，在函数内部this值就是事件的目标元素； 还有一点，他扩展作用域的方式,他可以使用with向外延生作用域链，这样可以访问外部变量很便利。</p>
-<p>function () {<br>    with(document) {<br>       with(this) {<br>           // 元素属性值<br>      }<br>   }<br>}</p>
-<p>不过缺点也是有的， 第一时差问题，如果用户触发点击事件时，事件处理程序还不具备触发条件时会报错， 第二扩展的作用域链在不同浏览器也存在差异。 <strong>2.DOM0级事件处理程序</strong> 其实这个没什么好说的，简单说下好了，就是首先取得dom的引用，然后将一个函数赋值给dom引用的一个事件处理程序属性。</p>
-<p>var btn  = document.getElementById(“myBtn”);<br>btn.onclick = function () {<br>    alert(this.id);<br>}</p>
-<p>this可以访问元素的任何属性和方法，事件处理程序在事件流的冒泡阶段处理。 <strong>3.DOM2级事件处理程序</strong> DOM2级主要就讲个addEventListener()和removeEventListener()，这里我们注意他们的第三个参数，是一个布尔值，true表示在捕获阶段调用事件处理程序，false表示在冒泡阶段调用事件处理程序，这里高程没有过多介绍,那么这里具体什么意思，看下面就知道了</p>
-<p>// html</p>
-<p>  btn</p>
-<p>// javascript<br>var div = document.getElementById(‘div’);<br>var btn = document.getElementById(‘btn’);<br>div.addEventListener(“click”, function () {<br>  console.log(‘div’);<br>},false);<br>btn.addEventListener(“click”, function () {<br>  console.log(‘btn’);<br>},false);<br>// 控制台<br>// 当第三个参数为false -&gt; 冒泡阶段调用程序<br>// ‘btn’<br>// ‘div’<br>// 当第三个参数为true -&gt; 捕获阶段调用程序<br>// ‘div’<br>// ‘btn’</p>
-<p>我想你应该明白了，他们之间的差异了，顺便说几个注意点，removeEventListener()不能用来移除add的匿名事件处理程序，还有addEventListener()可以用来对同一元素添加多个事件处理程序。</p>
-<hr>
-<p><strong>总结</strong> 写完之后，感觉这也没啥…</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JavaScript//" class="article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/javascript-e4-ba-8b-e4-bb-b6-e6-b5-81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e9-80-92-e5-bd-92-e5-87-bd-e6-95-b0-e8-ae-a1-e7-ae-97fibonacci-e6-95-b0-e5-88-97-e4-b9-8b-e8-ae-b0-e5-bf-86-e4-bc-98-e5-8c-96" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/15/e9-80-92-e5-bd-92-e5-87-bd-e6-95-b0-e8-ae-a1-e7-ae-97fibonacci-e6-95-b0-e5-88-97-e4-b9-8b-e8-ae-b0-e5-bf-86-e4-bc-98-e5-8c-96/">递归函数计算Fibonacci数列之记忆优化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/15/e9-80-92-e5-bd-92-e5-87-bd-e6-95-b0-e8-ae-a1-e7-ae-97fibonacci-e6-95-b0-e5-88-97-e4-b9-8b-e8-ae-b0-e5-bf-86-e4-bc-98-e5-8c-96/" class="archive-article-date">
-  	<time datetime="2017-09-15T00:03:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标题有点绕口，但是看完两个案例你就知道了。 <strong>Fibonacci</strong>数列简称斐波那契数列，每个fibonacci数字是之前两个fibonacci的数字之和。</p>
-<h3 id="普通的递归算法–求解"><a href="#普通的递归算法–求解" class="headerlink" title="普通的递归算法–求解"></a>普通的递归算法–求解</h3><p>// 递归<br>var fibonacci = function (n) {<br>    return n &lt; 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);<br>};<br>for (var i = 0; i &lt;= 10; i++) {<br>    document.writeln(‘//‘ + i + ‘:’ + fibonacci(i) + ‘<br>‘);<br>}</p>
-<p>// 0: 0<br>// 1: 1<br>// 2: 1<br>// 3: 2<br>// 4: 3<br>// 5: 5<br>// 6: 8<br>// 7: 13<br>// 8: 21<br>// 9: 34<br>// 10: 55</p>
-<p>观察这个结果fibonacci函数被调用了453次，我们调用了11次，他自身调用了442次计算。可能你觉得递归计算不都这样嘛，的确我开始也是这么认为的。下面看用了“记忆“的算法。</p>
-<hr>
-<h3 id="记忆–加持求解"><a href="#记忆–加持求解" class="headerlink" title="记忆–加持求解"></a>记忆–加持求解</h3><p>// 记忆加持<br>var fibonacci = function () {<br>  var memo = [0,1];<br>  var fib = function (n) {<br>    var result = memo[n];<br>    if (typeof result !== ‘number’) {<br>        result = fib(n - 1) + fib(n - 2);<br>        memo[n] = result;<br>        console.log(memo)<br>    }<br>    return result;<br>  };<br>  return fib;<br>}();<br>fibonacci(10);<br>// 输出<br>// [0, 1, 1]<br>// [0, 1, 1, 2]<br>// [0, 1, 1, 2, 3]<br>// [0, 1, 1, 2, 3, 5]<br>// [0, 1, 1, 2, 3, 5, 8]<br>// [0, 1, 1, 2, 3, 5, 8, 13]<br>// [0, 1, 1, 2, 3, 5, 8, 13, 21]<br>// [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]<br>// [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]</p>
-<p>当我们调用fiboacci(10)会放回一样的结果，但是它只调用了29次，我们调用了11次，它自身调用了18次，相比较前面的递归算法，有了大大的有话，我们用一个memo数组存储我们的结果，并将它影藏在闭包中。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JavaScript//" class="article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/15/e9-80-92-e5-bd-92-e5-87-bd-e6-95-b0-e8-ae-a1-e7-ae-97fibonacci-e6-95-b0-e5-88-97-e4-b9-8b-e8-ae-b0-e5-bf-86-e4-bc-98-e5-8c-96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-e6-b1-89-e8-af-ba-e5-a1-94-e7-ae-97-e6-b3-95-e6-88-91-e4-bb-ac-e5-bc-80-e5-a7-8b-e8-ae-a4-e8-af-86" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1161,6 +993,172 @@ return Promise.resolve(res)
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/07/11/e5-89-8d-e5-90-8e-e7-ab-af-e7-9a-84-e8-b7-a8-e5-9f-9f-e9-97-ae-e9-a2-98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e4-ba-91-e4-b9-a6-e7-ad-be-e7-b3-bb-e7-bb-9f-tp3-2-bootstrap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/25/e4-ba-91-e4-b9-a6-e7-ad-be-e7-b3-bb-e7-bb-9f-tp3-2-bootstrap/">云书签系统-TP3.2-Bootstrap</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/25/e4-ba-91-e4-b9-a6-e7-ad-be-e7-b3-bb-e7-bb-9f-tp3-2-bootstrap/" class="archive-article-date">
+  	<time datetime="2017-06-25T06:50:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>云书签</strong>是一个简单的书签存储系统。 <img src="http://47.94.173.244/blog/wp-content/uploads/2017/06/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170905093629-1024x738.png" alt="">主要技术</p>
+<ul>
+<li>1.后台用thinkphp3.2框架；</li>
+<li>2.数据库当然是Mysql;</li>
+<li>3.前端简陋的Bootstrap.</li>
+</ul>
+<p>主要内容</p>
+<ul>
+<li>1.表单数据录入存储功能；</li>
+<li>2.书签分类自由添加；</li>
+<li>3.书签删除功能，后台书签分类删除功能；</li>
+<li>4.后台登录实现。</li>
+</ul>
+<p>首页预览 后台登陆 分类管理 附上git地址–<a href="https://github.com/YTU94/Couldbookmarks" target="_blank" rel="noopener">Ytu-云书签</a> 线上使用网址–<a href="http://jiankang.juwu168.com/couldbookmarks/" target="_blank" rel="noopener">云书签</a></p>
+<hr>
+<h3 id="云书签升级版"><a href="#云书签升级版" class="headerlink" title="云书签升级版"></a>云书签升级版</h3><p>近期正在升级中(好像我的审美观有问题) 技术栈实现前后端分离 - 1.前端vue，iview - 2后台thinkphp3.2（虽然老了点，不过实用，再说这个项目也简单） 预览 <img src="http://jiankang.juwu168.com/blog/wp-content/uploads/2017/06/7YGG2F5TFVUJAJYYHJVB.png" alt=""> git – <a href="https://github.com/YTU94/coulbnook" title="github" target="_blank" rel="noopener">github</a> 地址-- <a href="http://jiankang.juwu168.com/couldmarks/#/" title="云书签-升级版" target="_blank" rel="noopener">云书签-升级版</a> 欢迎提交issues,pr</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP//" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/25/e4-ba-91-e4-b9-a6-e7-ad-be-e7-b3-bb-e7-bb-9f-tp3-2-bootstrap/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-angular-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/angular-2/">angular 2</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/17/angular-2/" class="archive-article-date">
+  	<time datetime="2017-05-16T18:50:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>学学ng2</p>
+</blockquote>
+<p>玩了一段时间的ng2,这个框架还是很给力的，性能上和1相比，感觉就不是一个框架， 我简单写了些demo;容我简单的展示下 主要内容： 1.angular/animations 2.angular的一些表单验证； 3.angular相适配的bootstrapk框架的应用等等； （顺便附上git）<a href="https://github.com/YTU94/ng2-demo" target="_blank" rel="noopener">https://github.com/YTU94/ng2-demo</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JavaScript//" class="article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/17/angular-2/">展开全文 >></a>
         </p>
       
 
